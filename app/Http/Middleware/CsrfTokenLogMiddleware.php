@@ -3,11 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureEmailIsVerified
+class CsrfTokenLogMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,12 @@ class EnsureEmailIsVerified
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user() ||
-            ($request->user() instanceof MustVerifyEmail &&
-            ! $request->user()->hasVerifiedEmail())) {
-            return response()->json(['message' => 'Your email address is not verified.'], 409);
-        }
+        // add csrf to all request and next handle for scramble dedoc
+        $request->merge([
+            'csrfToken' => csrf_token(),
+        ]);
+
+        Log::info('Processing request with method: '.$request->method().', CSRF token: '.csrf_token());
 
         return $next($request);
     }

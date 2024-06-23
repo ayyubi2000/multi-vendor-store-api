@@ -21,8 +21,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'csrfTokenLog' => \App\Http\Middleware\CsrfTokenLogMiddleware::class,
         ]);
 
-        //
+        $middleware->validateCsrfTokens(except: [
+            'api/*',
+        ]);
     })
+
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

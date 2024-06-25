@@ -22,7 +22,6 @@ class User extends BaseModel
     protected $fillable = [
         'email',
         'name',
-        'surename',
         'password',
         'email_verified_at',
     ];

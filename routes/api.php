@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EmailVerificationCodeController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\v1\Auth\AuthController;
+use App\Http\Controllers\v1\Auth\EmailVerificationCodeController;
+use App\Http\Controllers\v1\Auth\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);

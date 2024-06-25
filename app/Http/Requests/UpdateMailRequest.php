@@ -24,7 +24,7 @@ class UpdateMailRequest extends FormRequest
     public function rules()
     {
         return [
-            'data.name' => 'required',
+            'name' => 'required',
         ];
     }
 }

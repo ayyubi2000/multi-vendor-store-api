@@ -15,4 +15,9 @@ class EmailVerificationCode extends BaseModel
     protected $hidden = [
         'code',
     ];
+
+    protected $fillable = [
+        'code',
+        'email',
+    ];
 }

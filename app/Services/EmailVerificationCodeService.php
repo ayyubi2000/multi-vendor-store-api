@@ -62,6 +62,5 @@ class EmailVerificationCodeService extends BaseService
         } else {
             return ApiResponse::error('The provided code  is incorrect.', Response::HTTP_UNAUTHORIZED);
         }
-
     }
 }

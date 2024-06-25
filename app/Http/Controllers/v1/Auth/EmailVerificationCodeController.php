@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckEmailVerificationCodeRequest;
 use App\Http\Requests\StoreEmailVerificationCodeRequest;
 use App\Models\EmailVerificationCode;
@@ -20,11 +21,11 @@ class EmailVerificationCodeController extends Controller
 
     public function sendEmailVerification(StoreEmailVerificationCodeRequest $request): array|Builder|Collection|EmailVerificationCode
     {
-        return $this->service->createModel($request->validated('data'));
+        return $this->service->createModel($request->validated());
     }
 
     public function checkEmailVerification(CheckEmailVerificationCodeRequest $request)
     {
-        return $this->service->checkVerificationCode($request->validated('data'));
+        return $this->service->checkVerificationCode($request->validated());
     }
 }

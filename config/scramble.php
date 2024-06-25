@@ -29,7 +29,16 @@ return [
         /*
          * Description rendered on the home page of the API documentation (`/docs/api`).
          */
-        'description' => '',
+        'description' => '
+            Headers:
+
+            
+            Localization: Accecpt-Language, uz,ru,en (default: uz)
+            Currency: Accecpt-Currency, 861,840 (default: 840)
+            Content-Type, application/json 
+            Accept: application/json
+            Authorization: Bearer (token) 
+        ',
     ],
 
     /*

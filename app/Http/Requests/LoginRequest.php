@@ -3,14 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use JetBrains\PhpStorm\ArrayShape;
 
 class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {
@@ -22,7 +19,6 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    #[ArrayShape(['username' => "string[]", 'password' => "string[]"])]
     public function rules(): array
     {
         return [
@@ -33,7 +29,7 @@ class LoginRequest extends FormRequest
             'password' => [
                 'required',
                 'string',
-                'min:6'
+                'min:6',
             ],
         ];
     }

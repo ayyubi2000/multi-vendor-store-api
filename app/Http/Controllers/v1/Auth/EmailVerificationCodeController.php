@@ -19,11 +19,17 @@ class EmailVerificationCodeController extends Controller
         $this->service = $service;
     }
 
+    /**
+     * @unauthenticated
+     */
     public function sendEmailVerification(StoreEmailVerificationCodeRequest $request): array|Builder|Collection|EmailVerificationCode
     {
         return $this->service->createModel($request->validated());
     }
 
+    /**
+     * @unauthenticated
+     */
     public function checkEmailVerification(CheckEmailVerificationCodeRequest $request)
     {
         return $this->service->checkVerificationCode($request->validated());

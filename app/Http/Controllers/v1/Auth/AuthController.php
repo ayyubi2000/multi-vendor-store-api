@@ -19,16 +19,25 @@ class AuthController extends Controller
         $this->service = $service;
     }
 
+    /**
+     * @unauthenticated
+     */
     public function login(LoginRequest $request): JsonResponse
     {
         return $this->service->login($request->validated());
     }
 
+    /**
+     * @unauthenticated
+     */
     public function register(RegisterRequest $request): JsonResponse
     {
         return $this->service->register($request->validated());
     }
 
+    /**
+     * @unauthenticated
+     */
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
         return $this->service->resetPassword($request->validated());

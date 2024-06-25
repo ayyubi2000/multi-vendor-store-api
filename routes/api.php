@@ -11,7 +11,7 @@ Route::post('reset-password', [AuthController::class, 'resetPassword']);
 Route::post('email-verification', [EmailVerificationCodeController::class, 'sendEmailVerification']);
 Route::post('check-email-verification', [EmailVerificationCodeController::class, 'checkEmailVerification']);
 
-Route::middleware(['auth:sanctum', 'csrfTokenLog'])->group(function () {
+Route::middleware(['auth:sanctum', 'csrfTokenLog'])->prefix('v1/admin')->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('check-user-token', [AuthController::class, 'checkUserToken']);
     Route::apiResource('user', UserController::class);

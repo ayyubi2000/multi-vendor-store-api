@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\v1\Auth;
+namespace App\Http\Controllers\v1\Admin;
 
 use App\Dtos\ApiResponse;
 use App\Enum\UserRole;

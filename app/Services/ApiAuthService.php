@@ -63,7 +63,6 @@ class ApiAuthService extends BaseService
         $emailVerification = $this->EmailVerificationCodeRepository->findByEmail($data['email']);
 
         if ($emailVerification and Hash::check($data['code'], $emailVerification->code)) {
-
             $user = $this->repository->findByEmail($data['email']);
             $user->password = bcrypt($data['password']);
             $user->save();

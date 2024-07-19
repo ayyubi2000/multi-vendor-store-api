@@ -9,9 +9,11 @@
         "dedoc/scramble": "^0.10.13",
         "doctrine/dbal": "^4.0",
         "laravel/framework": "^11.9",
+        "laravel/reverb": "@beta",
         "laravel/sanctum": "^4.0",
         "laravel/telescope": "^5.1",
         "laravel/tinker": "^2.9",
+        "spatie/laravel-query-builder": "^6.0",
         "spatie/laravel-translatable": "*"
     },
     "require-dev": {

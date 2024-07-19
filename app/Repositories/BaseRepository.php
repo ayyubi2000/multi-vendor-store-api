@@ -4,28 +4,28 @@ namespace App\Repositories;
 
 use App\Enum\Pagination;
 use App\Interfaces\IBaseRepository;
-use App\Models\BaseModel;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository implements IBaseRepository
 {
-    protected BaseModel $modelClass;
+    protected Model $modelClass;
 
-    public function __construct(BaseModel $modelClass)
+    public function __construct(Model $modelClass)
     {
         $this->modelClass = $modelClass;
     }
 
-    protected function query(): Builder|BaseModel
+    protected function query(): Builder|Model
     {
         $query = $this->getBaseModel()->query();
 
         return $query->orderByDesc('id');
     }
 
-    protected function getBaseModel(): BaseModel
+    protected function getBaseModel(): Model
     {
         return $this->modelClass;
     }
@@ -58,7 +58,7 @@ class BaseRepository implements IBaseRepository
         return $query->get();
     }
 
-    public function create($data): array|Collection|Builder|BaseModel|null
+    public function create($data): array|Collection|Builder|Model|null
     {
         $model = $this->getBaseModel();
         $model->fill($data);
@@ -67,7 +67,7 @@ class BaseRepository implements IBaseRepository
         return $model;
     }
 
-    public function update($data, $id): BaseModel|array|Collection|Builder|null
+    public function update($data, $id): Model|array|Collection|Builder|null
     {
         $model = $this->findById($id);
         $model->fill($data);
@@ -76,7 +76,7 @@ class BaseRepository implements IBaseRepository
         return $model;
     }
 
-    public function findById($id, $relations = []): BaseModel|array|Collection|Builder|null
+    public function findById($id, $relations = []): Model|array|Collection|Builder|null
     {
         if (! empty($relations)) {
             return $this->query()->with($relations)->findOrFail($id);
@@ -85,7 +85,7 @@ class BaseRepository implements IBaseRepository
         return $this->query()->findOrFail($id);
     }
 
-    public function delete($id): array|Builder|Collection|BaseModel
+    public function delete($id): array|Builder|Collection|Model
     {
         $model = $this->findById($id);
         $model->delete();

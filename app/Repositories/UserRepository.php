@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Enum\GeneralStatus;
-use App\Models\BaseModel;
+use Throwable;
 use App\Models\User;
 use App\Models\UserRoles;
+use App\Enum\GeneralStatus;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Throwable;
 
 class UserRepository extends BaseRepository
 {
@@ -17,7 +17,7 @@ class UserRepository extends BaseRepository
         parent::__construct($model);
     }
 
-    public function create($data): array|Collection|Builder|BaseModel|null
+    public function create($data): array|Collection|Builder|Model|null
     {
         /**
          * @var $model User
@@ -38,7 +38,7 @@ class UserRepository extends BaseRepository
         return $model;
     }
 
-    public function update($data, $id): BaseModel|array|Collection|Builder|null
+    public function update($data, $id): Model|array|Collection|Builder|null
     {
         /**
          * @var $model User

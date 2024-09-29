@@ -47,8 +47,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public array $translatable = [];
-
     protected $with = ['roles'];
 
     public function roles(): HasMany

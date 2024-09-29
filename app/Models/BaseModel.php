@@ -9,5 +9,5 @@ class BaseModel extends Model
 {
     use HasTranslations;
 
-    public array $translatable;
+    protected array $translatable;
 }

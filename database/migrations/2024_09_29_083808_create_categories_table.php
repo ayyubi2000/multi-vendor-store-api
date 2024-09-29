@@ -12,9 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->timestamps();
+                $table->id('id');
+                $table->json('name');
+                $table->string('slug');
+                $table->string('icon', 100)->nullable();
+                $table->string('image', 100)->nullable();
+                $table->smallInteger('coefficient')->nullable()->default(3);
+                $table->boolean('is_active')->default(0);
+                $table->nestedSet();
+                $table->unsignedBigInteger('sort')->nullable();
+                $table->softDeletes();
+                $table->timestamps();
         });
     }
 

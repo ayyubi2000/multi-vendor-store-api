@@ -8,8 +8,6 @@ class EmailVerificationCode extends BaseModel
 {
     use HasFactory;
 
-    public array $translatable = [];
-
     protected $casts = [];
 
     protected $hidden = [
